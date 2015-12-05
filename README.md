@@ -26,10 +26,13 @@ null
 960614
 > snps[42]
 SNP {
+  alleles: [ 'G', 'G' ],
+  chromosome: 1,
+  referenceAssembly: 'GRCh37',
   rsid: 'rs3737728',
-  chromosome: '1',
-  position: '1021415',
-  alleles: [ 'G', 'G' ] }
+  position: 1021415,
+  strand: '+' }
+
 ```
 
 ## Contributing
