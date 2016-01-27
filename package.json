@@ -3,10 +3,9 @@
   "description": "Parse raw SNP data into Javascript objects",
   "version": "0.2.0",
   "homepage": "https://github.com/jameshiew/biojs-io-snparser",
-  "author": {
-    "name": "James Hiew",
-    "email": "james@hiew.net"
-  },
+  "contributors": [
+    "James Hiew <james@hiew.net>"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/jameshiew/biojs-io-snparser.git"
