@@ -16,13 +16,13 @@ const SNP = {
   /**
    * Encapsulates a SNP.
    *
-   * @param {Object} args
-   * @param {Array<string>} args.alleles
-   * @param {string} args.chromosome
-   * @param {int} args.position
-   * @param {string} args.referenceAssembly
-   * @param {string} args.rsid
-   * @param {string} args.strand
+   * @param {!Object} args
+   * @param {!Array<!string>} args.alleles
+   * @param {!string} args.chromosome
+   * @param {!number} args.position
+   * @param {!string} args.referenceAssembly
+   * @param {!string} args.rsid
+   * @param {!string} args.strand
    */
   init: function init (args) {
     this.alleles = args.alleles
@@ -35,70 +35,70 @@ const SNP = {
   }
 }
 
-/** @type {Map<string, !Object>} */
-const dialects = new Map()
-/** @type {Map<string, !function(Object):SNP>} */
-const converters = new Map()
+const Format = {
+  /**
+   * Encapsulates a DTC raw data format.
+   *
+   * @param {!Object} args
+   * @param {!Object} dialect
+   * @param {!function(!Object):!SNP} converter
+   */
+  init: function init (args) {
+    this.dialect = args.dialect
+    this.converter = args.converter
+    return this
+  }
+}
 
-dialects.set('23andMe-2015-07-22', {
-  auto_parse: true,
-  columns: [
-    'rsid',
-    'chromosome',
-    'position',
-    'genotype'
-  ],
-  comment: '#',
-  delimiter: '\t',
-  quote: ''
-})
-converters.set('23andMe-2015-07-22', (rawSnp) => Object.create(SNP).init({
-    alleles: rawSnp.genotype.split(''),
-    chromosome: rawSnp.chromosome,
-    position: rawSnp.position,
-    referenceAssembly: 'GRCh37',
-    rsid: rawSnp.rsid.match(/rs\d*/)
-      ? rawSnp.rsid
-      : undefined,
-    strand: '+'
+/** @type {Map<string, Format>} */
+const formats = new Map()
+formats.set('23andMe-2015-07-22', Object.create(Format).init({
+    dialect: {
+      auto_parse: true,
+      columns: [
+        'rsid',
+        'chromosome',
+        'position',
+        'genotype'
+      ],
+      comment: '#',
+      delimiter: '\t',
+      quote: ''
+    },
+    converter: function convert (rawSnp) {
+      return Object.create(SNP).init({
+        alleles: rawSnp.genotype.split(''),
+        chromosome: rawSnp.chromosome,
+        position: rawSnp.position,
+        referenceAssembly: 'GRCh37',
+        rsid: rawSnp.rsid.match(/rs\d*/)
+          ? rawSnp.rsid
+          : undefined,
+        strand: '+'
+      })
+    }
   })
 )
 
 module.exports = {
 
   SNP: SNP,
+  formats: formats,
   /**
    * Parse raw data into SNP Javascript objects.
    *
-   * @param {Object} options
-   * @param {string} options.data - contents of the raw data set
-   * @param {string} options.format - e.g. '23andMe-2015-07-22'
-   * @return {Promise}
+   * @param {!Object} args
+   * @param {!string} args.data - contents of the raw data set
+   * @param {!Format} args.format
+   * @return {!Promise}
    */
-  parseAsync: function parseAsync (options) {
-    options = options || {}
-    // validate arguments
-    const dialect = dialects.get(options.format)
-    if (!dialect) {
-      throw new Error(`Unrecognised format specified: ${options.format}`)
-    }
-
-    // parse to SNP objects sychronously
-    const parser = new csv.parse.Parser(dialect)
-    // set up parser
-    parser.write(options.data)
-    parser.end()
-
+  parseAsync: function parseAsync (args) {
     return new Promise((resolve, reject) => {
-      csv.parse(options.data, dialect, function onFinishedParsing (error, rawSnps) {
+      csv.parse(args.data, args.format.dialect, function onFinishedParsing (error, rawSnps) {
         if (error) {
           reject(error)
         }
-        if (options.format === '23andMe-2015-07-22') {
-          resolve(rawSnps.map(converters.get('23andMe-2015-07-22')))
-        } else {
-          reject(new Error('Could not recognise the specified format'))
-        }
+        resolve(rawSnps.map(args.format.converter))
       })
     })
   }
