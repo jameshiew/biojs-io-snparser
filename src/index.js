@@ -51,8 +51,9 @@ const Format = {
 }
 
 /** @type {Map<string, Format>} */
-const formats = new Map()
-formats.set('23andMe-2015-07-22', Object.create(Format).init({
+const formats = new Map([[
+  '23andMe-2015-07-22',
+  Object.create(Format).init({
     dialect: {
       auto_parse: true,
       columns: [
@@ -78,10 +79,9 @@ formats.set('23andMe-2015-07-22', Object.create(Format).init({
       })
     }
   })
-)
+]])
 
 module.exports = {
-
   SNP: SNP,
   formats: formats,
   /**
