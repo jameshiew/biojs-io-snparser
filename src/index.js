@@ -40,8 +40,8 @@ const Format = {
    * Encapsulates a DTC raw data format.
    *
    * @param {!Object} args
-   * @param {!Object} dialect
-   * @param {!function(!Object):!SNP} converter
+   * @param {!Object} args.dialect
+   * @param {!function(!Object):!SNP} args.converter
    */
   init: function init (args) {
     this.dialect = args.dialect
