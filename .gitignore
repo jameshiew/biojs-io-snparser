@@ -1,8 +1,6 @@
-node_modules
+# IntelliJ
 .idea/
-*.log
-.DS_Store
-build
-coverage/lcov.info
-.coveralls.yml
-examples-out
+*.iml
+
+# node
+node_modules/
