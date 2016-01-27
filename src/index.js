@@ -84,6 +84,7 @@ const formats = new Map([[
 module.exports = {
   SNP: SNP,
   formats: formats,
+  supportedFormats: Array.from(formats.keys()),
   /**
    * Parse raw data into SNP Javascript objects.
    *
