@@ -6,6 +6,12 @@
   "contributors": [
     "James Hiew <james@hiew.net>"
   ],
+  "keywords": [
+    "biojs",
+    "23andMe",
+    "parser",
+    "snp"
+  ],
   "repository": {
     "type": "git",
     "url": "git://github.com/jameshiew/biojs-io-snparser.git"
@@ -16,7 +22,7 @@
   "license": "MIT",
   "main": "lib/index.js",
   "scripts": {
-    "test": "mocha",
+    "test": "echo 'Tests not yet implemented'",
     "build": "mkdirp build && browserify -r ./:biojs-io-snparser -o build/snparser.js",
     "build-browser": "npm run build",
     "install": "npm run build"
@@ -26,16 +32,8 @@
   },
   "devDependencies": {
     "browserify": "6.x",
-    "chai": "1.x",
     "gulp": "^3.9.0",
     "gulp-standard": "^5.2.2",
-    "mkdirp": "^0.5.0",
-    "mocha": "1.x"
-  },
-  "keywords": [
-    "biojs",
-    "23andMe",
-    "parser",
-    "snp"
-  ]
+    "mkdirp": "^0.5.0"
+  }
 }
