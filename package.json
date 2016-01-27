@@ -20,20 +20,20 @@
     "url": "https://github.com/jameshiew/biojs-io-snparser/issues"
   },
   "license": "MIT",
-  "main": "lib/index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo 'Tests not yet implemented'",
     "build": "mkdirp build && browserify -r ./:biojs-io-snparser -o build/snparser.js",
     "build-browser": "npm run build",
     "install": "npm run build"
   },
-  "dependencies": {
-    "csv": "^0.4.6"
-  },
   "devDependencies": {
     "browserify": "6.x",
     "gulp": "^3.9.0",
     "gulp-standard": "^5.2.2",
     "mkdirp": "^0.5.0"
+  },
+  "dependencies": {
+    "csv-parse": "^1.0.1"
   }
 }
