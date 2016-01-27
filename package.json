@@ -31,9 +31,11 @@
     "csv": "^0.4.6"
   },
   "devDependencies": {
-    "mkdirp": "^0.5.0",
     "browserify": "6.x",
     "chai": "1.x",
+    "gulp": "^3.9.0",
+    "gulp-standard": "^5.2.2",
+    "mkdirp": "^0.5.0",
     "mocha": "1.x"
   },
   "keywords": [
