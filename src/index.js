@@ -90,10 +90,13 @@ module.exports = {
    *
    * @param {!Object} args
    * @param {!string} args.data - contents of the raw data set
-   * @param {!Format} args.format
+   * @param {(!Format|!string)} args.format - a Format object or a string from supportedFormats
    * @return {!Promise}
    */
   parseAsync: function parseAsync (args) {
+    if (typeof args.format === 'string' && formats.has(args.format)) {
+      args.format = formats.get(args.format)
+    }
     return new Promise((resolve, reject) => {
       csv.parse(args.data, args.format.dialect, function onFinishedParsing (error, rawSnps) {
         if (error) {
