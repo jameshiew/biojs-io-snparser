@@ -1,7 +1,7 @@
 {
   "name": "biojs-io-snparser",
   "description": "Parse raw SNP data into Javascript objects",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "homepage": "https://github.com/jameshiew/biojs-io-snparser",
   "contributors": [
     "James Hiew <james@hiew.net>"
@@ -22,18 +22,20 @@
   "license": "MIT",
   "main": "src/index.js",
   "scripts": {
-    "test": "echo 'Tests not yet implemented'",
+    "test": "mocha",
     "build": "mkdirp build && browserify -r ./:biojs-io-snparser -o build/snparser.js",
     "build-browser": "npm run build",
     "install": "npm run build"
   },
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-standard": "^5.2.2"
+    "chai": "3.5.0",
+    "gulp": "3.9.1",
+    "gulp-standard": "7.0.1",
+    "mocha": "3.0.2"
   },
   "dependencies": {
-    "csv-parse": "^1.0.1",
-    "mkdirp": "^0.5.0",
-    "browserify": "6.x"
+    "browserify": "13.1.0",
+    "csv-parse": "1.1.7",
+    "mkdirp": "0.5.1"
   }
 }

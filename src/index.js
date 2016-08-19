@@ -2,7 +2,7 @@
  * biojs-io-snparser
  * https://github.com/jameshiew/biojs-io-snparser
  *
- * Copyright (c) 2015 James Hiew
+ * Copyright (c) 2015-2016 James Hiew
  * Licensed under the MIT license.
  */
 
@@ -14,7 +14,7 @@ const csv = {
 
 const SNP = {
   /**
-   * Encapsulates a SNP.
+   * Encapsulates a SNP (single nucleotide polymorphism).
    *
    * @param {!Object} args
    * @param {!Array<!string>} args.alleles
@@ -37,7 +37,7 @@ const SNP = {
 
 const Format = {
   /**
-   * Encapsulates a DTC raw data format.
+   * Encapsulates a DTC (direct-to-consumer) raw data format.
    *
    * @param {!Object} args
    * @param {!Object} args.dialect
