@@ -1,7 +1,7 @@
 {
   "name": "biojs-io-snparser",
   "description": "Parse raw SNP data into Javascript objects",
-  "version": "0.4.1",
+  "version": "0.4.2-dev",
   "homepage": "https://github.com/jameshiew/biojs-io-snparser",
   "contributors": [
     "James Hiew <james@hiew.net>"
