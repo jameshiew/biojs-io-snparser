@@ -1,4 +1,7 @@
-test/
+build/
+
+.idea/
+*.iml
 
 # don't ignore .npmignore files
 !.npmignore
