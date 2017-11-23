@@ -5,6 +5,8 @@
 [![Build Status](https://travis-ci.org/jameshiew/biojs-io-snparser.svg)](https://travis-ci.org/jameshiew/biojs-io-snparser)
 [![dependencies Status](https://david-dm.org/jameshiew/biojs-io-snparser/status.svg)](https://david-dm.org/jameshiew/biojs-io-snparser)
 
+***This package is no longer maintained and not a good example of parsing a genome text file using node.js - see https://github.com/cslarsen/dna-traits for a better 23AndMe parser solution.***
+
 Parse raw SNP data into Javascript objects.
 
 The ultimate aim of this component is to be able to parse the raw data from various direct-to-consumer (DTC) SNP
